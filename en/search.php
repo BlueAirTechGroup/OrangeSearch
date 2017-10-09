@@ -181,6 +181,7 @@
 			    }
 			    $myMySQLCls->closeConn($searchDBConn);
 			?>
+			<p class="text-right">Powered by <a href="http://www.xsyds.cn/" target="_blank">BlueAirTechGroup</a>&copy;2015-2017</p>
 		</div>
 	</body>
 </html>
