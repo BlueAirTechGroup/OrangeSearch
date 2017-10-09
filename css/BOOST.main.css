@@ -1248,14 +1248,19 @@ nav.navbar-black .navbar-link:hover{
 }
 @media (min-width:1201px){
 	nav.navbar-hasbottomborder .navbar-brand{
-		height:55px;
-		line-height:55px;
+		height:50px;
+		line-height:50px;
 	}
 	nav.navbar-hasbottomborder .navbar-links{
-		height:55px;
+		height:50px;
 	}
 	nav.navbar-hasbottomborder .navbar-link{
-		height:55px;
+		height:50px;
+		line-height:45px;
+	}
+	nav.navbar-hasbottomborder .navbar-link a{
+		height:45px;
+		line-height:45px;
 	}
 	nav.navbar-hasbottomborder .navbar-link.navbar-link-current a::after{
 		content:"";
