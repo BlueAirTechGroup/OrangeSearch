@@ -64,7 +64,7 @@
             echo 'DomainLevel:' . ($domainlevel - 1);
             //2,3,4...级域名
             $MyRank -= ($domainLevel-2) * 10;
-        } 
+        }
         //其次查看域名的
         //接着计算Path是否为顶级path, 如果不是, 发现一个/减去15 rank
         $URLPath = $URLComponent['path'];
@@ -73,6 +73,9 @@
         if($PathLevel > 2){
             echo 'PathLevel: ' . ($PathLevel-2);
             $MyRank -= ($PathLevel - 2) * 15;
+        }elseif($PathLevel<=2 && $URLPath!="/" && $URLPath != ""){
+            //如果不是根目录, 算文件吧
+            $MyRank -= 10;
         }
         //然后看协议, 如果是http,-5, 其他协议-20
         if($URLComponent['scheme']=='http' || empty($URLComponent['scheme'])){
