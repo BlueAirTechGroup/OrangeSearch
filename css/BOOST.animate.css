@@ -1,0 +1,248 @@
+﻿/* BOOST Framework 1.0 Animation CSS FILE - If you want to change, please refer to the MIT open-source lisence
+ * Powered by BlueAirTechGroup(www.xsyds.cn)
+ */
+@charset "utf-8";
+.boost-animate-noblur-frombig, .boost-animate-completeloading{
+	animation-name: noblur-frombig;
+	animation-duration: 2s;
+	animation-iteration-count: 1; /*infinite */
+	animation-direction: alternate; /* reverse */
+	animation-timing-function: ease;
+	-webkit-animation: noblur-frombig 2s ease 1;
+}
+.boost-animate-spinner {
+  width: 60px;
+  height: 60px;
+  background-color: #67CF22;
+ 
+  margin: 100px auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+.boost-animate-mouseon-blur:hover{
+	animation-name: blur-mouseon-small;
+	animation-duration: 2s;
+	animation-iteration-count: 1; /*infinite */
+	animation-direction: alternate; /* reverse */
+	animation-timing-function: ease;
+	-webkit-animation: blur-mouseon-small 2s ease 1;
+	filter: url(blur.svg#blur);
+	-webkit-filter: blur(2px); /* Chrome, Opera */
+	-moz-filter: blur(2px);
+	-ms-filter: blur(2px);    
+	filter: blur(2px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2, MakeShadow=false); 	
+}
+.boost-animate-mouseon-noblur-fromsmall:hover{
+	animation-name: noblur-fromsmall;
+	animation-duration: 2s;
+	animation-iteration-count: 1; /*infinite */
+	animation-direction: alternate; /* reverse */
+	animation-timing-function: ease;
+	-webkit-animation: noblur-fromsmall 2s ease 1;
+	filter: url(blur.svg#blur);
+	-webkit-filter: blur(0px); /* Chrome, Opera */
+	-moz-filter: blur(0px);
+	-ms-filter: blur(0px);    
+	filter: blur(0px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=0, MakeShadow=false); 	
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+ 
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@-webkit-keyframes blur-mouseon-small{
+	0%{
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+	} 100% {
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+	}
+}
+@keyframes blur-mouseon-small{
+	0%{
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+		-moz-filter: blur(0px);
+		-ms-filter: blur(0px);    
+		filter: blur(0px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=0, MakeShadow=false); 
+	} 100% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+		-moz-filter: blur(2px);
+		-ms-filter: blur(2px);    
+		filter: blur(2px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2, MakeShadow=false); 	
+	}
+}
+
+@-webkit-keyframes noblur-fromsmall{
+	0%{
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+	} 50% {
+		-webkit-filter: blur(1px);
+	} 100% {
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+	}
+}
+@keyframes noblur-fromsmall{
+	0%{
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+		-moz-filter: blur(2px);
+		-ms-filter: blur(2px);    
+		filter: blur(2px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2, MakeShadow=false); 
+	} 50% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(1px); /* Chrome, Opera */
+		-moz-filter: blur(1px);
+		-ms-filter: blur(1px);    
+		filter: blur(1px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1, MakeShadow=false); 
+	} 100% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+		-moz-filter: blur(0px);
+		-ms-filter: blur(0px);    
+		filter: blur(0px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=0, MakeShadow=false); 	
+	}
+}
+@-webkit-keyframes noblur-frommid{
+	0%{
+		-webkit-filter: blur(5px); /* Chrome, Opera */
+	} 20% {
+		-webkit-filter: blur(4px);
+	} 40% {
+		-webkit-filter: blur(3px);
+	} 60% {
+		-webkit-filter: blur(2px);
+	} 80% {
+		-webkit-filter: blur(1px);
+	} 100% {
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+	}
+}
+@keyframes noblur-frommid{
+	0%{
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(5px); /* Chrome, Opera */
+		-moz-filter: blur(5px);
+		-ms-filter: blur(5px);    
+		filter: blur(5px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5, MakeShadow=false); 
+	}20%{
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(4px); /* Chrome, Opera */
+		-moz-filter: blur(4px);
+		-ms-filter: blur(4px);    
+		filter: blur(4px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false); 
+	} 40% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(3px); /* Chrome, Opera */
+		-moz-filter: blur(3px);
+		-ms-filter: blur(3px);    
+		filter: blur(3px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3, MakeShadow=false); 
+	} 60% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+		-moz-filter: blur(2px);
+		-ms-filter: blur(2px);    
+		filter: blur(2px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2, MakeShadow=false); 
+	} 80% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(1px); /* Chrome, Opera */
+		-moz-filter: blur(1px);
+		-ms-filter: blur(1px);    
+		filter: blur(1px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1, MakeShadow=false); 
+	} 100% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+		-moz-filter: blur(0px);
+		-ms-filter: blur(0px);    
+		filter: blur(0px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=0, MakeShadow=false); 	
+	}
+}
+
+@-webkit-keyframes noblur-frombig{
+	0%{
+		-webkit-filter: blur(10px); /* Chrome, Opera */
+	} 20% {
+		-webkit-filter: blur(8px);
+	} 40% {
+		-webkit-filter: blur(6px);
+	} 60% {
+		-webkit-filter: blur(4px);
+	} 80% {
+		-webkit-filter: blur(2px);
+	} 100% {
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+	}
+}
+@keyframes noblur-frombig{
+	0%{
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(10px); /* Chrome, Opera */
+		-moz-filter: blur(10px);
+		-ms-filter: blur(10px);    
+		filter: blur(10px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); 
+	} 20% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(8px); /* Chrome, Opera */
+		-moz-filter: blur(8px);
+		-ms-filter: blur(8px);    
+		filter: blur(8px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=8, MakeShadow=false); 
+	} 40% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(6px); /* Chrome, Opera */
+		-moz-filter: blur(6px);
+		-ms-filter: blur(6px);    
+		filter: blur(6px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=6, MakeShadow=false);
+	} 60% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(4px); /* Chrome, Opera */
+		-moz-filter: blur(4px);
+		-ms-filter: blur(4px);    
+		filter: blur(4px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false); 
+	} 80% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+		-moz-filter: blur(2px);
+		-ms-filter: blur(2px);    
+		filter: blur(2px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2, MakeShadow=false); 
+	} 100% {
+		filter: url(blur.svg#blur);
+		-webkit-filter: blur(0px); /* Chrome, Opera */
+		-moz-filter: blur(0px);
+		-ms-filter: blur(0px);    
+		filter: blur(0px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=0, MakeShadow=false); 	
+	}
+}
