@@ -87,8 +87,6 @@
 			                if(strpos(strtolower(base64_decode($DBVariableVal)),strtolower($usrSearchWord))===false){
 			                    //Title未找到关键词, SearchRank - 50
 			                    $TempRST['searchRank'] -= 50;
-			                }else if(strpos(strtolower(base64_decode($DBVariableVal)),strtolower($usrSearchWord))===0){
-			                    $TempRST['searchRank'] += 50;
 			                }else if(strpos(strtolower(base64_decode($DBVariableVal)),strtolower($usrSearchWord))<=30){
 			                    $TempRST['searchRank'] += 30;
 			                }
