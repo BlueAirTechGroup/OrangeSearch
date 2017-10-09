@@ -263,7 +263,7 @@
             foreach($crawLinks as $myLink){
                 //首先检查是否存在
                 $AnchorActualURL = MakeAURL($myLink->href, $crawURL);
-                if($myMYSQLCls->checkExist($dbConn, 'ScannedList', array("URL"=>$AnchorActualURL))==0 && $myMYSQLCls->checkExist($dbConn, 'PendingScanList', array("URL"=>$AnchorActualURL))==0){
+                if(checkURL($AnchorActualURL) && $myMYSQLCls->checkExist($dbConn, 'ScannedList', array("URL"=>$AnchorActualURL))==0 && $myMYSQLCls->checkExist($dbConn, 'PendingScanList', array("URL"=>$AnchorActualURL))==0){
                     $myMYSQLCls->insertRow($dbConn, 'PendingScanList', array("URL"=>$AnchorActualURL));
                 }
             }
