@@ -69,6 +69,7 @@
                  *   - TinyInt Rank(Range: 0 - 10, 实际判断时*100)
                  *   - Int (TimeStamp) LastAcess
                  */
+			    $startTime = microtime(true);
 			    $searchDBConn = $myMySQLCls -> connectDB($CONFIG_MYSQLUSER, $CONFIG_MYSQLPASS, $CONFIG_MYSQLDB);
 			    if(!searchDBConn){
 			        exit('<p class="lead">内部错误: 连接数据库失败</p>');
@@ -181,6 +182,7 @@
 			    }
 			    $myMySQLCls->closeConn($searchDBConn);
 			?>
+			<p class="text-right">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime)/1000000; ?>秒</p>
 			<p class="text-right">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
 		</div>
 	</body>
