@@ -15,16 +15,20 @@
 	</head>
 	<body>
 		<?php 
-		  require '../BoostPHP/BoostPHP.main.php';
-		  require '../config.php';
+		  require_once '../BoostPHP/BoostPHP.main.php';
+		  require_once '../config.php';
 		  $myMySQLCls = new BoostPHP_MySQLClass();
 		  $searchDBConn = $myMySQLCls -> connectDB($CONFIG_MYSQLUSER, $CONFIG_MYSQLPASS, $CONFIG_MYSQLDB);
+		  if(!$searchDBConn){
+		      echo '<div class="cover"><div class="inner"><h1>Orange Search</h1><p>Opps..An error has occured inside the Database</p><p>Please check out later</p></div></div>';
+		      exit();
+		  }
 		?>
 		<div class="cover">
 			<div class="inner">
 				<h1>Orange Search</h1>
 				<p>Your search has never been so secure and transparent</p>
-				<p>Currently, <?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array(),array());  ?> results are availble for you</p>
+				<p>Currently, <?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?> results are availble for you</p>
 				<p class="small">Test Version[0.000001A]</p>
 				
 				<form method="post" action="search.php">

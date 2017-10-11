@@ -19,13 +19,17 @@
 		  require '../config.php';
 		  $myMySQLCls = new BoostPHP_MySQLClass();
 		  $searchDBConn = $myMySQLCls -> connectDB($CONFIG_MYSQLUSER, $CONFIG_MYSQLPASS, $CONFIG_MYSQLDB);
-		?>
+		  if(!$searchDBConn){
+		      echo '<div class="cover"><div class="inner"><h1>橙子搜索</h1><p>对不起, 一个内部数据库错误发生了</p><p>工程师已经在路上啦, 请稍后再查看</p></div></div>';
+		      exit();
+		  }
+	    ?>
 		<div class="cover">
 			<div class="inner">
 				<h1>橙子搜索</h1>
 				<p>你的搜索,从未如此安全和安心</p>
 				<p class="small">Test Version[0.000001A]</p>
-				<p>截止到现在, 有<?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array(),array());  ?>个URL被收录</p>
+				<p>截止到现在, 有<?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
 				<form method="post" action="search.php">
 					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
 					<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
