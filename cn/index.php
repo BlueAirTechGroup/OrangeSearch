@@ -29,7 +29,7 @@
 				<h1>橙子搜索</h1>
 				<p>你的搜索,从未如此安全和安心</p>
 				<p class="small">Test Version[0.000001A]</p>
-				<p>截止到现在, 有<?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
+				<p>截止到现在, 有<?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
 				<form method="post" action="search.php">
 					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
 					<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
