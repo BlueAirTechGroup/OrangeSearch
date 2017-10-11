@@ -184,8 +184,7 @@
         $crawContent = '';
         $crawURLTaken = true;
         $crawURLRank = 10;
-        
-        $waitForCrawList = $myMYSQLCls->selectIntoArray_FromRequirements($dbConn, 'PendingScanList');
+        $waitForCrawList = $myMYSQLCls->selectIntoArray_FromRequirements($dbConn, 'PendingScanList',array(),array(),1,0);
         if($waitForCrawList['count']==0){
             exit("FINISHED: The Pending List is empty");
         }
@@ -272,6 +271,7 @@
             }
         }
         $mySimpleDom->clear();
+        unset($waitForCrawList); //清除waitforCrawList
     }
     $myMYSQLCls->closeConn($dbConn);
 ?>
