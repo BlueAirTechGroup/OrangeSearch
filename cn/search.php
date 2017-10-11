@@ -28,7 +28,7 @@
 		<nav class="navbar-fixed-top navbar-black navbar-hasbottomborder">
 			<div class="container">
                 <navicon></navicon>
-                <div class="navbar-brand"><b><a href="index.html">橙子搜索</a></b></div>
+                <div class="navbar-brand"><b><a href="index.php">橙子搜索</a></b></div>
                 <div class="navbar-links">
                     <div class="navbar-link navbar-link-current"><a href="javascript:void(0);">网页</a></div>
                 </div>
