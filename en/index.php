@@ -14,11 +14,19 @@
         <meta name="description" content="Orange Search is the search engine powered by BATG. It will not track your search history, even if you asked to do so." />
 	</head>
 	<body>
+		<?php 
+		  require '../BoostPHP/BoostPHP.main.php';
+		  require '../config.php';
+		  $myMySQLCls = new BoostPHP_MySQLClass();
+		  $searchDBConn = $myMySQLCls -> connectDB($CONFIG_MYSQLUSER, $CONFIG_MYSQLPASS, $CONFIG_MYSQLDB);
+		?>
 		<div class="cover">
 			<div class="inner">
 				<h1>Orange Search</h1>
 				<p>Your search has never been so secure and transparent</p>
+				<p>Currently, <?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array(),array());  ?> results are availble for you</p>
 				<p class="small">Test Version[0.000001A]</p>
+				
 				<form method="post" action="search.php">
 					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter search content here..."></input>
 					<input type="submit" class="btn" name="SearchBtn" value="Search" title="Search"></input>
@@ -26,5 +34,8 @@
 				</form>
 			</div>
 		</div>
+		<?php 
+		  $myMySQLCls->closeConn($myMySQLCls);
+		?>
 	</body>
 </html>

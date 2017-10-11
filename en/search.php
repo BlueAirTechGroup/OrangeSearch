@@ -9,7 +9,7 @@
 		  $myResultCls = new BoostPHP_ResultClass();
 		  $usrSearchWord = $_POST['searchKeyword'];
 		  if(empty($usrSearchWord)){
-		      $myResultCls->jumpToPage("index.html");
+		      $myResultCls->jumpToPage("index.php");
 		  }
 		?>
 		<meta charset="utf-8" />

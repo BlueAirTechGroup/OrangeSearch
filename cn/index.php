@@ -14,11 +14,18 @@
         <meta name="description" content="橙子搜索是由形随意动推出的新时代安全搜索服务. 橙子搜索不会主动跟踪您的搜索记录， 尽管您要求他们被记录下来." />
 	</head>
 	<body>
+		<?php 
+		  require '../BoostPHP/BoostPHP.main.php';
+		  require '../config.php';
+		  $myMySQLCls = new BoostPHP_MySQLClass();
+		  $searchDBConn = $myMySQLCls -> connectDB($CONFIG_MYSQLUSER, $CONFIG_MYSQLPASS, $CONFIG_MYSQLDB);
+		?>
 		<div class="cover">
 			<div class="inner">
 				<h1>橙子搜索</h1>
 				<p>你的搜索,从未如此安全和安心</p>
 				<p class="small">Test Version[0.000001A]</p>
+				<p>截止到现在, 有<?php $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array(),array());  ?>个URL被收录</p>
 				<form method="post" action="search.php">
 					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
 					<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
@@ -26,5 +33,8 @@
 				</form>
 			</div>
 		</div>
+		<?php 
+		  $myMySQLCls->closeConn($searchDBConn);
+		?>
 	</body>
 </html>
