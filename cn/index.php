@@ -37,7 +37,7 @@
 						<a href="../?selectLang=true" class="btn">Language</a>
 					</p>
 				</form>
-				<p>想看看我们的<a href="whyorangesearch.html">核心理念</a></p>
+				<p>想看看我们的<a href="whyorangesearch.html">核心理念</a>?</p>
 			</div>
 		</div>
 		<?php 
