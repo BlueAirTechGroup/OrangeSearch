@@ -4,14 +4,13 @@
      * Range: 0 - 100
      * 
      */
+    require_once 'config.php';
+    require_once 'BoostPHP/BoostPHP.main.php';
+    require_once 'simple_html_dom.php';
+
     function checkURL($URL){
         $URLComponent = parse_url($URL);
-        $NonTakenList = array(
-            "www.baidu.com",
-            "www.sogou.com",
-            "www.so.com"
-        );
-        foreach($NonTakenList as $MyNon){
+        foreach($CONFIG_NONTAKENLIST as $MyNon){
             if(strpos($URL, $MyNon)!==false){
                 return false;
             }
@@ -146,9 +145,6 @@
      *   - TinyInt Rank(Range: 0 - 10, 实际判断时*100)
      *   - Int (TimeStamp) LastAcess
      */
-    require_once 'config.php';
-    require_once 'BoostPHP/BoostPHP.main.php';
-    require_once 'simple_html_dom.php';
     
     set_time_limit(0);
     //ob_end_clean(); //清除之前的缓冲内容，这是必需的，如果之前的缓存不为空的话，里面可能有http头或者其它内容，导致后面的内容不能及时的输出
@@ -178,10 +174,10 @@
     $mySimpleDom = new simple_html_dom();
     $myNetworkCls = new BoostPHP_NetworkClass();
     $myStringCls = new BoostPHP_StringClass();
-    while(round((microtime(true)-$programStartTime)*1000) < $usrCrawTimeLim){
-        echo '<br />CurrentTime: ' . round((microtime(true)-$programStartTime)*1000) . '; ';
+    $currentUsageTime = round((microtime(true)-$programStartTime)*1000);
+    while($currentUsageTime < $usrCrawTimeLim){
+        echo '<br />CurrentTime: ' . $currentUsageTime . '; ';
         //当前时间与启动时间减去小于CrawTimeLim时, 不断采集
-        $crawContent = '';
         $crawURLTaken = true;
         $crawURLRank = 10;
         $waitForCrawList = $myMYSQLCls->selectIntoArray_FromRequirements($dbConn, 'PendingScanList',array(),array(),1,0);
@@ -213,18 +209,19 @@
         //先把URL从MySQL表中删除
         $myMYSQLCls->deleteRows($dbConn, 'PendingScanList', array("URL"=>$tempcrawURL));
         //添加到已采集列表
-        $myMYSQLCls->insertRow($dbConn, 'ScannedList', array("URL"=>$crawURL));
+        $myMYSQLCls->insertRow($dbConn, 'ScannedList', array("URL"=>$tempcrawURL));
         $crawContent = $myNetworkCls->getFromAddr($crawURL, $crawURL);
-        $EncodingUTF8MethodPos = strpos(strtolower($crawContent),"charset=utf-8") || strpos(strtolower($crawContent),'charset="utf-8"') || strpos(strtolower($crawContent),"charset=utf8") || strpos(strtolower($crawContent),'charset="utf8"');
+        echo 'HTTPCode:' . $crawContent['code'] . '; ';
+        $EncodingUTF8MethodPos = strpos(strtolower($crawContent['content']),"charset=utf-8") || strpos(strtolower($crawContent['content']),'charset="utf-8"') || strpos(strtolower($crawContent['content']),"charset=utf8") || strpos(strtolower($crawContent['content']),'charset="utf8"');
         if(!$EncodingUTF8MethodPos){
             echo 'Page-IS-GBK';
             //不是UTF-8, 目前认为是GBK
-            $crawContent=iconv("GBK", "UTF-8//IGNORE", $crawContent);
+            $crawContent['content']=iconv("GBK", "UTF-8//IGNORE", $crawContent['content']);
         }else{
             echo 'Page-IS-UTF';
-            //$crawContent=iconv("UTF-8",'GBK//IGNORE',$crawContent);
+            //$crawContent['content']=iconv("UTF-8",'GBK//IGNORE',$crawContent['content']);
         }
-        $mySimpleDom->load($crawContent);
+        $mySimpleDom->load($crawContent['content']);
         $crawDomTitles = $mySimpleDom->find('title',0);
         if(empty($crawDomTitles)){
             //Title不存在
@@ -250,12 +247,12 @@
         $crawURLRank = round(calculate_Rank($crawURL, $crawURLTitle, $crawURLKeyword, $crawURLDescription)/10);
         echo 'Rank:' . $crawURLRank . '; ';
         //录入信息
-        if($crawURLRank<0 || strpos(strtolower($crawURLTitle),"404")!==false || strpos(strtolower($crawURLTitle),"301")!==false || strpos(strtolower($crawURLTitle),"500")!==false || strpos(strtolower($crawURLTitle),"错误")!==false || strpos(strtolower($crawURLTitle),"error")!==false){
+        if($crawURLRank<0 || $crawContent['code']!=200){
             $crawURLTaken = false;
             if($myMYSQLCls->checkExist($dbConn, 'NonTakenList', array("URL"=>$crawURL))==0){
                 $myMYSQLCls->insertRow($dbConn, 'NonTakenList', array("URL"=>$crawURL,"Title"=>base64_encode($crawURLTitle),"Rank"=>$crawURLRank,"LastAccess"=>time()));
             }
-        }else if(checkURL($crawURL) && !empty($crawContent) && $myMYSQLCls->checkExist($dbConn, 'SearchRstList', array("URL"=>$crawURL))==0){ //只有符合采集规则的网页才可被采集
+        }else if(checkURL($crawURL) && !empty($crawContent['content']) && $myMYSQLCls->checkExist($dbConn, 'SearchRstList', array("URL"=>$crawURL))==0){ //只有符合采集规则的网页才可被采集
             $crawURLTaken = true;
             $myMYSQLCls->insertRow($dbConn, 'SearchRstList', array("URL"=>$crawURL,"Title"=>base64_encode($crawURLTitle),"Description"=>base64_encode($crawURLDescription),"Keywords"=>base64_encode($crawURLKeyword),"Rank"=>$crawURLRank,"LastAccess"=>time()));
         }
@@ -272,6 +269,11 @@
         }
         $mySimpleDom->clear();
         unset($waitForCrawList); //清除waitforCrawList
+        unset($crawContent);
+        $currentUsageTime = round((microtime(true)-$programStartTime)*1000); //刷新时间, 方便while访问
     }
     $myMYSQLCls->closeConn($dbConn);
+    echo '<br />-----------------------------------------';
+    echo '<br />Execution Time:' . $currentUsageTime . ' ms';
+    echo '<br />Memory Usage:' . (memory_get_peak_usage()/1024/1024) . 'M';
 ?>
