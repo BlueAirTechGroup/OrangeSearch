@@ -182,6 +182,7 @@
 			    }
 			    $myMySQLCls->closeConn($searchDBConn);
 			?>
+			<p class="text-right">Used Memory: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
 			<p class="text-right">Total Execution Time: <?php $nowTime = microtime(true); echo ($nowTime-$startTime)/1000000; ?> s</p>
 			<p class="text-right">Powered by <a href="http://www.xsyds.cn/" target="_blank">BlueAirTechGroup</a>&copy;2015-2017</p>
 		</div>
