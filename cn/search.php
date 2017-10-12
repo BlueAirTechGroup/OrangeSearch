@@ -185,7 +185,7 @@
 			    $myMySQLCls->closeConn($searchDBConn);
 			?>
 			<p class="text-right">使用内存: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
-			<p class="text-right">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime)/1000000; ?>秒</p>
+			<p class="text-right">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
 			<p class="text-right">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
 		</div>
 	</body>
