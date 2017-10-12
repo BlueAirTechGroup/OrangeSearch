@@ -31,10 +31,13 @@
 				<p>截止到现在, 有<?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
 				<p class="small">Test Version[0.000001A]</p>
 				<form method="post" action="search.php">
-					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
-					<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
-					<a href="../?selectLang=true" class="btn">Language</a>
+					<p>
+						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
+						<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
+						<a href="../?selectLang=true" class="btn">Language</a>
+					</p>
 				</form>
+				<p>想看看我们的<a href="whyorangesearch.html">核心理念</a></p>
 			</div>
 		</div>
 		<?php 

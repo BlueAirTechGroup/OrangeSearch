@@ -32,10 +32,13 @@
 				<p class="small">Test Version[0.000001A]</p>
 				
 				<form method="post" action="search.php">
-					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter search content here..."></input>
-					<input type="submit" class="btn" name="SearchBtn" value="Search" title="Search"></input>
-					<a href="../?selectLang=true" class="btn">Language</a>
+					<p>
+						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter search content here..."></input>
+						<input type="submit" class="btn" name="SearchBtn" value="Search" title="Search"></input>
+						<a href="../?selectLang=true" class="btn">Language</a>
+					</p>
 				</form>
+				<p>You want to see our <a href="whyorangesearch.html">Major Concepts</a>?</p>
 			</div>
 		</div>
 		<?php 
