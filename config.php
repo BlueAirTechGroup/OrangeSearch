@@ -13,4 +13,5 @@
         'www.sogou.com',
         'www.so.com'
     );
+    $CONFIG_PARTITIONSIZE = 2000; //SIZE越大, 执行速度越快
 ?>
