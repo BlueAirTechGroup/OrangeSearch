@@ -155,7 +155,10 @@
 			        if($TempRST['searchRank'] > 0){
 			            $SearchRST[] = $TempRST;
 			        }
+			        unset($MySQLSDBRst['result'][$i]); //单个结果访问完毕,释放内存
 			    }
+			    unset($MySQLSDBRst); //释放总内存
+			    
 			    //所有统计完毕, 检查是否empty
 			    if(!empty($SearchRST)){
 			        require_once '../BoostPHP/BoostPHP.Alg.php';
