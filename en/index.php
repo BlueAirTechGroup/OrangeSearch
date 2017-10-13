@@ -27,9 +27,9 @@
 		<div class="cover">
 			<div class="inner">
 				<h1>Orange Search</h1>
-				<p>Your search has never been so secure and transparent</p>
+				<p class="lead">Your search has never been so secure and transparent</p>
 				<p>Currently, <?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?> results are availble for you</p>
-				<p class="small">Test Version[0.000001A]</p>
+				<p class="small">Test Version[0000.0002 Alpha]</p>
 				
 				<form method="post" action="search.php">
 					<p>

@@ -27,9 +27,9 @@
 		<div class="cover">
 			<div class="inner">
 				<h1>橙子搜索</h1>
-				<p>你的搜索,从未如此安全和安心</p>
+				<p class="lead">你的搜索,从未如此安全和安心</p>
 				<p>截止到现在, 有<?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
-				<p class="small">Test Version[0.000001A]</p>
+				<p class="small">Test Version[0000.0002 Alpha]</p>
 				<form method="post" action="search.php">
 					<p>
 						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
