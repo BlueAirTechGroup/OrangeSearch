@@ -24,7 +24,7 @@
 		      exit();
 		  }
 	    ?>
-		<div class="cover">
+		<div class="cover" style="background:#FF9900;">
 			<div class="inner">
 				<h1>橙子搜索</h1>
 				<p class="lead">你的搜索,从未如此安全和安心</p>
@@ -34,10 +34,10 @@
 					<p>
 						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
 						<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
-						<a href="../?selectLang=true" class="btn">Language</a>
+						<a class="btn btn-phone-full" href="../?selectLang=true">Language</a>
 					</p>
 				</form>
-				<p>想看看我们的<a href="whyorangesearch.html">核心理念</a>?</p>
+				<p>想看看我们的<a class="text-white" href="whyorangesearch.html">核心理念</a>?</p>
 			</div>
 		</div>
 		<?php 

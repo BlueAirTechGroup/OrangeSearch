@@ -24,7 +24,7 @@
 		      exit();
 		  }
 		?>
-		<div class="cover">
+		<div class="cover" style="background:#FF9900;">
 			<div class="inner">
 				<h1>Orange Search</h1>
 				<p class="lead">Your search has never been so secure and transparent</p>
@@ -35,10 +35,10 @@
 					<p>
 						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter search content here..."></input>
 						<input type="submit" class="btn" name="SearchBtn" value="Search" title="Search"></input>
-						<a href="../?selectLang=true" class="btn">Language</a>
+						<a class="btn" href="../?selectLang=true">Language</a>
 					</p>
 				</form>
-				<p>You want to see our <a href="whyorangesearch.html">Major Concepts</a>?</p>
+				<p>You want to see our <a class="text-white" href="whyorangesearch.html">Major Concepts</a>?</p>
 			</div>
 		</div>
 		<?php 
