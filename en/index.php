@@ -12,6 +12,36 @@
 		<title>Orange Search - Your search engine, much safer than ever before</title>
 		<meta name="keywords" content="Search, Online Search, Anonymous, Internet Thinking, Innovative, OpenSource" />
         <meta name="description" content="Orange Search is the search engine powered by BATG. It will not track your search history, even if you asked to do so." />
+		<style>
+            #SearchBtn{
+                vertical-align:top;
+                font-size:0;
+                background-color:transparent;
+                display:inline-block;
+                height:50px;
+                width:50px;
+                border:3px solid #FFFFFF;
+                border-top:none;
+                border-left:none;
+                border-right:none;
+                border-radius:0;
+                background-image:url("../image/searchbtn.png");
+                margin:0;
+            }
+            #searchKeyword{
+                border:3px solid #FFFFFF;
+                border-top:none;
+                border-left:none;
+                border-right:none;
+                border-radius:0;
+                height:47px;
+                line-height:50px;
+                font-size:34px;
+                padding:0;
+                margin:0;
+                vertical-align:top;
+            }
+        </style>
 	</head>
 	<body>
 		<?php 
@@ -24,21 +54,26 @@
 		      exit();
 		  }
 		?>
-		<div class="cover" style="background:#FF9900;">
+		<div class="cover bg-orange">
 			<div class="inner">
-				<h1>Orange Search</h1>
-				<p class="lead">Your search has never been so secure and transparent</p>
-				<p>Currently, <?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?> results are availble for you</p>
-				<p class="small">Test Version[0000.0002 Alpha]</p>
-				
-				<form method="post" action="search.php">
-					<p>
-						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter search content here..."></input>
-						<input type="submit" class="btn" name="SearchBtn" value="Search" title="Search"></input>
-						<a class="btn" href="../?selectLang=true">Language</a>
-					</p>
-				</form>
-				<p>You want to see our <a class="text-white" href="whyorangesearch.html">Major Concepts</a>?</p>
+				<div class="row row-as-base">
+					<div class="col col-tablet-9">
+        					<div class="container">
+                    				<form method="post" action="search.php">
+                    					<p style="font-size:0;margin-bottom:10px;">
+                    						<span class="display-normal-tablet" style="font-size:34px;line-height:50px;margin-right:4px;">Orange Search</span>
+                    						<input class="bg-orange" type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter Search Content Here..."></input>
+                    						<input type="submit" class="backgroundimg-cover" name="SearchBtn" id="SearchBtn"></input>
+                    					</p>
+                    				</form>
+                    				<p class="lead text-right">Your Search has never been so secure and private</p>
+                    				<p class="text-right">Until now, <?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?> search results are available</p>
+                    				<p class="text-right">Want to see our <a class="text-white" href="whyorangesearch.html">Major Concepts</a>?</p>
+                    				<p class="text-right small">Test Version[0000.0002 Alpha]</p>
+                    				<p class="text-right"><a class="text-white" href="../?selectLang=true">Choose Language</a></p>
+        					</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<?php 

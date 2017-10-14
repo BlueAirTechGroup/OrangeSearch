@@ -12,6 +12,36 @@
 		<title>橙子搜索 - 你的搜索, 比以前更安全</title>
 		<meta name="keywords" content="搜索, 在线搜索, 匿名, 互联网思维, 创新, 开源, 搜索引擎， 搜索" />
         <meta name="description" content="橙子搜索是由形随意动推出的新时代安全搜索服务. 橙子搜索不会主动跟踪您的搜索记录， 尽管您要求他们被记录下来." />
+        <style>
+            #SearchBtn{
+                vertical-align:top;
+                font-size:0;
+                background-color:transparent;
+                display:inline-block;
+                height:50px;
+                width:50px;
+                border:3px solid #FFFFFF;
+                border-top:none;
+                border-left:none;
+                border-right:none;
+                border-radius:0;
+                background-image:url("../image/searchbtn.png");
+                margin:0;
+            }
+            #searchKeyword{
+                border:3px solid #FFFFFF;
+                border-top:none;
+                border-left:none;
+                border-right:none;
+                border-radius:0;
+                height:47px;
+                line-height:50px;
+                font-size:34px;
+                padding:0;
+                margin:0;
+                vertical-align:top;
+            }
+        </style>
 	</head>
 	<body>
 		<?php 
@@ -24,20 +54,26 @@
 		      exit();
 		  }
 	    ?>
-		<div class="cover" style="background:#FF9900;">
+		<div class="cover bg-orange">
 			<div class="inner">
-				<h1>橙子搜索</h1>
-				<p class="lead">你的搜索,从未如此安全和安心</p>
-				<p>截止到现在, 有<?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
-				<p class="small">Test Version[0000.0002 Alpha]</p>
-				<form method="post" action="search.php">
-					<p>
-						<input type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
-						<input type="submit" class="btn" name="SearchBtn" value="搜索" title="搜索"></input>
-						<a class="btn btn-phone-full" href="../?selectLang=true">Language</a>
-					</p>
-				</form>
-				<p>想看看我们的<a class="text-white" href="whyorangesearch.html">核心理念</a>?</p>
+				<div class="row row-as-base">
+					<div class="col col-tablet-9">
+        					<div class="container">
+                    				<form method="post" action="search.php">
+                    					<p style="font-size:0;margin-bottom:10px;">
+                    						<span class="display-normal-tablet" style="font-size:34px;line-height:50px;margin-right:4px;">橙子搜索</span>
+                    						<input class="bg-orange" type="text" name="searchKeyword" id="searchKeyword" placeholder="在此输入搜索内容..."></input>
+                    						<input type="submit" class="backgroundimg-cover" name="SearchBtn" id="SearchBtn"></input>
+                    					</p>
+                    				</form>
+                    				<p class="lead text-right">你的搜索,从未如此安全和安心</p>
+                    				<p class="text-right">截止到现在, 有<?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
+                    				<p class="text-right">想看看我们的<a class="text-white" href="whyorangesearch.html">核心理念</a>?</p>
+                    				<p class="text-right small">Test Version[0000.0002 Alpha]</p>
+                    				<p class="text-right"><a class="text-white" href="../?selectLang=true">Choose Language</a></p>
+        					</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<?php 
