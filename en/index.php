@@ -72,7 +72,7 @@
                                 						</span>
                                 					</p>
                                 				</form>
-                                				<div class="after-float"></div>
+                                				<div class="after-float" style="margin-bottom:10px;"></div>
                                 				<p class="lead text-right">Your search has never been so secure, and safe</p>
                                 				<p class="text-right">Until now, <?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?> search results are available</p>
                                 				<p class="text-right">Want to see our <a class="text-white" href="whyorangesearch.html">Major Concepts</a>?</p>

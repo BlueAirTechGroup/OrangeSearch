@@ -72,7 +72,7 @@
                                 						</span>
                                 					</p>
                                 				</form>
-                                				<div class="after-float"></div>
+                                				<div class="after-float" style="margin-bottom:10px;"></div>
                                 				<p class="lead text-right">你的搜索,从未如此安全和安心</p>
                                 				<p class="text-right">截止到现在, 有<?php echo $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array());  ?>个URL被收录</p>
                                 				<p class="text-right">想看看我们的<a class="text-white" href="whyorangesearch.html">核心理念</a>?</p>
