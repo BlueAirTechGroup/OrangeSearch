@@ -76,10 +76,10 @@
 		?>
     			<div class="col col-as-base invisible-comp invisible-bigcomp">
 				<div class="row row-phone-6 bg-black">
-					<p class="text-center" style="font-size:10vh;line-height:33vh;"><a class="text-white" href="<?php echo $CHSURL; ?>">简体中文</a></p>
+					<p class="text-center" style="font-size:10vh;line-height:50vh;"><a class="text-white" href="<?php echo $CHSURL; ?>">简体中文</a></p>
 				</div>
 				<div class="row row-phone-6 bg-white">
-					<p class="text-center" style="font-size:10vh;line-height:33vh;"><a class="text-black" href="<?php echo $ENGURL; ?>">ENGLISH</a></p>
+					<p class="text-center" style="font-size:10vh;line-height:50vh;"><a class="text-black" href="<?php echo $ENGURL; ?>">ENGLISH</a></p>
 				</div>
 			</div>
             <div class="row row-as-base invisible-phone invisible-tablet">
