@@ -23,29 +23,64 @@
 		<title><?php echo $usrSearchWord ?> - 橙子搜索 | 你的搜索, 比以前更安全</title>
 		<meta name="keywords" content="搜索, 在线搜索, 匿名, 互联网思维, 创新, 开源, 搜索引擎， 搜索" />
         <meta name="description" content="橙子搜索是由形随意动推出的新时代安全搜索服务. 橙子搜索不会主动跟踪您的搜索记录， 尽管您要求他们被记录下来." />
+        <style>
+            #OSTitle{
+                font-size:30px;
+                line-height:35px;
+                vertical-align:top;
+                color:#FC9F4D;
+                margin-right:8px;
+            }
+            #searchKeyword{
+                font-size:20px;
+                line-height:35px;
+                height:35px;
+                border:none;
+                border-radius:0;
+                vertical-align:top;
+                color:#FFFFFF;
+                background-color:#FC9F4D;
+                padding:0;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            #reSearchBtn{
+                border:none;
+                height:35px;
+                width:35px;
+                color:#FFFFFF;
+                font-size:0;
+                vertical-align:top;
+                background-color:#FC9F4D;
+                background-image:url("../image/searchbtn.png");
+            }
+            #changeLangBtn{
+                font-size:22px;
+                padding:0;
+                height:35px;
+                margin:0;
+                width:auto;
+                padding-left:5px;
+                padding-right:5px;
+                line-height:35px;
+                vertical-align:top;
+                color:#FFFFFF;
+                background-color:#FC9F4D;
+                display:inline-block;
+                border-left:2px solid #000000;
+            }
+            .color-orange{
+                color:#FC9F4D;
+            }
+        </style>
 	</head>
-	<body class="has-navbar-top">
-		<nav class="navbar-fixed-top navbar-black navbar-hasbottomborder">
-			<div class="container">
-                <navicon></navicon>
-                <div class="navbar-brand"><b><a href="index.php">橙子搜索</a></b></div>
-                <div class="navbar-links">
-                    <div class="navbar-link navbar-link-current"><a href="javascript:void(0);">网页</a></div>
-                </div>
-                <div class="navbar-links navbar-links-right">
-                    <div class="navbar-link"><a href="../?selectLang=true">Language</a></div>
-                </div>
-			</div>
-		</nav>
-		<div class="container">
-			<!--  SearchBox Section Begins -->
-			<form method="post" action="">
-				<p>
-					<input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchWord; ?>"></input>
-					<input type="submit" name="reSearchBtn" id="reSearchBtn" class="btn" value="搜索" title="搜索"></input>
-				</p>
-			</form>
-			<!-- SearchBox Section Ends -->
+	<body style="padding-top:77px;">
+		<div class="bg-white" style="position:fixed;top:0;left:0;width:100%;width:100vw;">
+        		<div class="container" style="padding-top:20px;padding-bottom:20px;">
+        			<span id="OSTitle" class="display-normal-comp">橘子搜索</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn">Language</a></div>
+			<div style="display:box;width:100%;border-bottom:2px solid #FC9F4D;"></div>
+		</div>
+		
 			<?php 
                 /* PHP自动输出搜索结果 */
                 /* $CONFIG_MYSQLDB
@@ -177,23 +212,26 @@
 			            $TempOutputArr['Description'] = $myStrCls->wordLimit($TempOutputArr['Description'],250,true);
 			            if(!empty($TempOutputArr['URL'])){
 			            ?>
-			                <div class="row row-as-base">
-			                    <div class="col col-phone-12 col-comp-8">
-			                        <h4><a href="<?php echo $TempOutputArr['URL']; ?>" target="_blank"><?php echo empty($TempOutputArr['Title']) ? "No Title" : $TempOutputArr['Title']; ?></a></h4>
-			                        <p><?php echo $TempOutputArr['Description']; ?></p>
-			                        <p class="small">URL: <?php echo $TempOutputArr['URL'];  ?></p>
-			                        <p class="small">参考信息: 搜索重量[<?php echo $TempOutputArr['searchRank']; ?>/100], 权重[<?php echo $TempOutputArr['Rank']; ?>/10]</p>
+			                <!-- >div class="row row-as-base">
+			                    <div class="col col-phone-12 col-comp-8" -->
+			                    <div class="container" style="margin-top:20px;">
+			                        <h4 class="without-margin"><a class="color-orange" href="<?php echo $TempOutputArr['URL']; ?>" target="_blank"><?php echo empty($TempOutputArr['Title']) ? "No Title" : $TempOutputArr['Title']; ?></a></h4>
+			                        <p class="small without-margin text-grey">URL: <?php echo $TempOutputArr['URL'];  ?></p>
+			                        <p class="without-margin"><?php echo $TempOutputArr['Description']; ?></p>
+			                        <p class="small without-margin">参考信息: 搜索重量[<?php echo $TempOutputArr['searchRank']; ?>/100], 权重[<?php echo $TempOutputArr['Rank']; ?>/10]</p>
 			                    </div>
-			               	</div>
+			                    <!-- /div>
+			               	</div -->
 			        	    <?php
 			            }
 			        }
 			    }
 			    $myMySQLCls->closeConn($searchDBConn);
 			?>
-			<p class="text-right">使用内存: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
-			<p class="text-right">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
-			<p class="text-right">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
-		</div>
+			<div class="container" style="margin-top:20px;">
+        			<p class="text-grey">使用内存: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
+        			<p class="text-grey">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
+        			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
+			</div>
 	</body>
 </html>
