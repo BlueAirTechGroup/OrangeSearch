@@ -69,9 +69,6 @@
                 display:inline-block;
                 border-left:2px solid #000000;
             }
-            .color-orange{
-                color:#FC9F4D;
-            }
         </style>
 	</head>
 	<body style="padding-top:77px;">
@@ -213,7 +210,7 @@
         		                <!-- div class="row row-as-base">
         		                    <div class="col col-phone-12 col-comp-8" -->
         		                    <div class="container" style="margin-top:20px;">
-        		                        <h4 class="without-margin"><a class="color-orange" href="<?php echo $TempOutputArr['URL']; ?>" target="_blank"><?php echo empty($TempOutputArr['Title']) ? "No Title" : $TempOutputArr['Title']; ?></a></h4>
+        		                        <h4 class="without-margin"><a class="text-orange" href="<?php echo $TempOutputArr['URL']; ?>" target="_blank"><?php echo empty($TempOutputArr['Title']) ? "No Title" : $TempOutputArr['Title']; ?></a></h4>
         		                        <p class="small text-grey without-margin">URL: <?php echo $TempOutputArr['URL'];  ?></p>
         		                        <p class="without-margin"><?php echo $TempOutputArr['Description']; ?></p>
         		                        <p class="small without-margin">Reference: searchWeight[<?php echo $TempOutputArr['searchRank']; ?>/100], siteRank[<?php echo $TempOutputArr['Rank']; ?>/10]</p>
