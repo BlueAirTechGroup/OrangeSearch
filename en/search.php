@@ -102,7 +102,7 @@
                  */
 			    
 			    $startTime = microtime(true);
-			    $cacheRST = $myResultCls->cacheStart(43200, true, 'cachepages/');
+			    $cacheRST = $myResultCls->cacheStart($CONFIG_CACHETIME, true, 'cachepages/');
 			    if($cacheRST){
         			    $searchDBConn = $myMySQLCls -> connectDB($CONFIG_MYSQLUSER, $CONFIG_MYSQLPASS, $CONFIG_MYSQLDB);
         			    if(!searchDBConn){
