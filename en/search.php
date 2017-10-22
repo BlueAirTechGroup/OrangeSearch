@@ -74,7 +74,7 @@
 	<body style="padding-top:77px;">
 		<div class="bg-white" style="position:fixed;top:0;left:0;width:100%;width:100vw;">
         		<div class="container" style="padding-top:20px;padding-bottom:20px;">
-        			<span id="OSTitle" class="display-normal-comp">OrangeSearch</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn">Language</a></div>
+        			<span id="OSTitle" class="invisible-phone invisible-tablet">OrangeSearch</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn" class="invisible-phone">Language</a></div>
 			<div style="display:box;width:100%;border-bottom:2px solid #FC9F4D;"></div>
 		</div>
 			<?php 
