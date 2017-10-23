@@ -7,7 +7,6 @@
     require_once 'config.php';
     require_once 'BoostPHP/BoostPHP.main.php';
     require_once 'simple_html_dom.php';
-
     function checkURL($URL){
         $URLComponent = parse_url($URL);
         foreach($CONFIG_NONTAKENLIST as $MyNon){
