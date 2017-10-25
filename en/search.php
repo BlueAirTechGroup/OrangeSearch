@@ -11,6 +11,10 @@
 		  if(empty($usrSearchWord)){
 		      $myResultCls->jumpToPage("index.php");
 		  }
+		  $usrSearchPage = $_GET['page'];
+		  if(empty($usrSearchPage)){
+		      $usrSearchPage = 0;
+		  }
 		?>
 		<meta charset="utf-8" />
 		<script src="https://www.xsyds.cn/js/core.js"></script>
@@ -109,6 +113,7 @@
         			        exit('<p class="lead">Inner Error: failed to connect to database</p>');
         			    }
         			    $SearchRST = array();
+        			    
         			    $MySQLDBNum = $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array(),array());
         			    //$MySQLDBLastNum = $MySQLDBNum % $CONFIG_PARTITIONSIZE;
         			    $MySQLIterationTime = ceil($MySQLDBNum / $CONFIG_PARTITIONSIZE);
@@ -134,7 +139,7 @@
         			        $myStrCls = new BoostPHP_StringClass();
         			        $myAlgCls = new BoostPHP_AlgorithmClass();
         			        $newSearchRST = $myAlgCls -> quickSortArrays_ByField($SearchRST, "searchRank");
-        			        for($i=count($newSearchRST)-1;$i>=0;$i--){
+        			        for($i=count($newSearchRST)-1;$i>=0;$i--){ //-($usrSearchPage*$CONFIG_PAGERESULT)
         			            $TempOutputArr = $newSearchRST[$i];
         			            $TempOutputArr['Title'] = $myStrCls->wordLimit($TempOutputArr['Title'],100,true);
         			            $TempOutputArr['Description'] = $myStrCls->wordLimit($TempOutputArr['Description'],250,true);
@@ -161,6 +166,7 @@
 			<div class="container" style="margin-top:20px;">
         			<p class="text-grey">Used Memory: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
         			<p class="text-grey">Execution Time: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
+        			<p class="text-grey">Total Result Number: <?php echo $SearchRST; ?></p>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">BlueAirTechGroup</a>&copy;2015-2017</p>
 				<?php if(!$cacheRST){ ?> <p class="text-grey">Use BoostPHP Framework to generate fast cache pages</p> <?php } ?>
 			</div>

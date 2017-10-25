@@ -11,6 +11,10 @@
 		  if(empty($usrSearchWord)){
 		      $myResultCls->jumpToPage("index.php");
 		  }
+		  $usrSearchPage = $_GET['page'];
+		  if(empty($usrSearchPage)){
+		      $usrSearchPage = 0;
+		  }
 		?>
 		<meta charset="utf-8" />
 		<script src="https://www.xsyds.cn/js/core.js"></script>
@@ -136,7 +140,7 @@
         			        $myStrCls = new BoostPHP_StringClass();
         			        $myAlgCls = new BoostPHP_AlgorithmClass();
         			        $newSearchRST = $myAlgCls -> quickSortArrays_ByField($SearchRST, "searchRank");
-        			        for($i=count($newSearchRST)-1;$i>=0;$i--){
+        			        for($i=count($newSearchRST)-1;$i>=0;$i--){ //-($usrSearchPage*$CONFIG_PAGERESULT)s
         			            $TempOutputArr = $newSearchRST[$i];
         			            $TempOutputArr['Title'] = $myStrCls->wordLimit($TempOutputArr['Title'],100,true);
         			            $TempOutputArr['Description'] = $myStrCls->wordLimit($TempOutputArr['Description'],250,true);
@@ -163,6 +167,7 @@
 			<div class="container" style="margin-top:20px;">
         			<p class="text-grey">使用内存: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
         			<p class="text-grey">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
+        			<p class="text-grey">搜索结果数: <?php echo $SearchRST; ?></p>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
 				<?php if(!$cacheRST){ ?> <p class="text-grey">使用形随意动BoostPHP框架进行快速缓存</p> <?php } ?>
 			</div>

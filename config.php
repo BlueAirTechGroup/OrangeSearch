@@ -15,4 +15,5 @@
     );
     $CONFIG_PARTITIONSIZE = 2000; //SIZE越大, 执行速度越快
     $CONFIG_CACHETIME = 43200; //12小时
+    $CONFIG_PAGERESULT = 100;
 ?>
