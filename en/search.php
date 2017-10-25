@@ -168,7 +168,7 @@
 			?>
 			<div class="container" style="margin-top:20px;">
         			<p class="text-grey">Used Memory: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
-        			<p class="text-grey">Execution Time: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
+        			<p class="text-grey">Execution Time: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?> second(s)</p>
         			<?php if($cacheRST){ ?><p class="text-grey">Total Result Number: <?php echo count($SearchRST); ?></p><?php } ?>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">BlueAirTechGroup</a>&copy;2015-2017</p>
 				<?php if(!$cacheRST){ ?> <p class="text-grey">Use BoostPHP Framework to generate fast cache pages</p> <?php } ?>
