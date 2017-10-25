@@ -15,6 +15,9 @@
 		  if(empty($usrSearchPage)){
 		      $usrSearchPage = 0;
 		  }
+		  $usrSearchHTMLWord = str_replace("\"", "&quot;", $usrSearchWord);
+		  $usrSearchHTMLWord = str_replace("<","&lt;",$usrSearchHTMLWord);
+		  $usrSearchHTMLWord = str_replace(">", "&gt;", $usrSearchHTMLWord);
 		?>
 		<meta charset="utf-8" />
 		<script src="https://www.xsyds.cn/js/core.js"></script>
@@ -24,7 +27,7 @@
         <link type="text/css" href="https://www.xsyds.cn/css/BOOST.animate.css" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title><?php echo $usrSearchWord ?> - 橙子搜索 | 你的搜索, 比以前更安全</title>
+		<title><?php echo $usrSearchHTMLWord ?> - 橙子搜索 | 你的搜索, 比以前更安全</title>
 		<meta name="keywords" content="搜索, 在线搜索, 匿名, 互联网思维, 创新, 开源, 搜索引擎， 搜索" />
         <meta name="description" content="橙子搜索是由形随意动推出的新时代安全搜索服务. 橙子搜索不会主动跟踪您的搜索记录， 尽管您要求他们被记录下来." />
         <style>
@@ -78,7 +81,7 @@
 	<body style="padding-top:77px;">
 		<div class="bg-white" style="position:fixed;top:0;left:0;width:100%;width:100vw;">
         		<div class="container" style="padding-top:20px;padding-bottom:20px;">
-        			<span id="OSTitle" class="invisible-phone invisible-tablet">橘子搜索</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn" class="invisible-phone">Language</a></div>
+        			<span id="OSTitle" class="invisible-phone invisible-tablet">橘子搜索</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchHTMLWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn" class="invisible-phone">Language</a></div>
 			<div style="display:box;width:100%;border-bottom:2px solid #FC9F4D;"></div>
 		</div>
 		
@@ -167,7 +170,7 @@
 			<div class="container" style="margin-top:20px;">
         			<p class="text-grey">使用内存: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
         			<p class="text-grey">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
-        			<p class="text-grey">搜索结果数: <?php echo $SearchRST; ?></p>
+        			<?php if($cacheRST){ ?><p class="text-grey">搜索结果数: <?php echo count($SearchRST); ?></p><?php } ?>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
 				<?php if(!$cacheRST){ ?> <p class="text-grey">使用形随意动BoostPHP框架进行快速缓存</p> <?php } ?>
 			</div>

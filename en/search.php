@@ -15,6 +15,9 @@
 		  if(empty($usrSearchPage)){
 		      $usrSearchPage = 0;
 		  }
+		  $usrSearchHTMLWord = str_replace("\"", "&quot;", $usrSearchWord);
+		  $usrSearchHTMLWord = str_replace("<","&lt;",$usrSearchHTMLWord);
+		  $usrSearchHTMLWord = str_replace(">", "&gt;", $usrSearchHTMLWord);
 		?>
 		<meta charset="utf-8" />
 		<script src="https://www.xsyds.cn/js/core.js"></script>
@@ -24,7 +27,7 @@
         <link type="text/css" href="https://www.xsyds.cn/css/BOOST.animate.css" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title><?php echo $usrSearchWord ?> - Orange Search | Your search engine, much safer than ever before</title>
+		<title><?php echo $usrSearchHTMLWord ?> - Orange Search | Your search engine, much safer than ever before</title>
 		<meta name="keywords" content="Search, Online Search, Anonymous, Internet Thinking, Innovative, OpenSource" />
         <meta name="description" content="Orange Search is the search engine powered by BATG. It will not track your search history, even if you asked to do so." />
         <style>
@@ -78,7 +81,7 @@
 	<body style="padding-top:77px;">
 		<div class="bg-white" style="position:fixed;top:0;left:0;width:100%;width:100vw;">
         		<div class="container" style="padding-top:20px;padding-bottom:20px;">
-        			<span id="OSTitle" class="invisible-phone invisible-tablet">OrangeSearch</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn" class="invisible-phone">Language</a></div>
+        			<span id="OSTitle" class="invisible-phone invisible-tablet">OrangeSearch</span><form action="" method="post" style="display:inline-block;"><input type="text" name="searchKeyword" id="searchKeyword" value="<?php echo $usrSearchHTMLWord; ?>"></input><input class="backgroundimg-cover" type="submit" name="reSearchBtn" id="reSearchBtn" value="搜索" title="搜索"></input></form><a href="../?selectLang=true" id="changeLangBtn" class="invisible-phone">Language</a></div>
 			<div style="display:box;width:100%;border-bottom:2px solid #FC9F4D;"></div>
 		</div>
 			<?php 
@@ -166,7 +169,7 @@
 			<div class="container" style="margin-top:20px;">
         			<p class="text-grey">Used Memory: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
         			<p class="text-grey">Execution Time: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
-        			<p class="text-grey">Total Result Number: <?php echo $SearchRST; ?></p>
+        			<?php if($cacheRST){ ?><p class="text-grey">Total Result Number: <?php echo count($SearchRST); ?></p><?php } ?>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">BlueAirTechGroup</a>&copy;2015-2017</p>
 				<?php if(!$cacheRST){ ?> <p class="text-grey">Use BoostPHP Framework to generate fast cache pages</p> <?php } ?>
 			</div>
