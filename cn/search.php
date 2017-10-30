@@ -118,10 +118,10 @@
         			    }
         			    
         			    $SearchRST = array();
-        			    $MySQLDBNum = $myMySQLCls->checkExist($searchDBConn, 'SearchRstList', array(),array());
-        			    //$MySQLDBLastNum = $MySQLDBNum % $CONFIG_PARTITIONSIZE;
-        			    $MySQLIterationTime = ceil($MySQLDBNum / $CONFIG_PARTITIONSIZE);
-        			    for($partialit = 0; $partialit < $MySQLIterationTime; $partialit++){
+        			    
+        			    $partialit = 0;
+        			    $lastResultNum = $CONFIG_PARTITIONSIZE;
+        			    while($lastResultNum == $CONFIG_PARTITIONSIZE){
         			        //开始分段select
         			        $MySQLSDBRst = $myMySQLCls->selectIntoArray_FromRequirements($searchDBConn, "SearchRstList",array(),array("Rank"),$CONFIG_PARTITIONSIZE,($partialit*$CONFIG_PARTITIONSIZE));
                 			    for($i=$MySQLSDBRst['count']-1;$i>=0;$i--){
@@ -134,7 +134,9 @@
                 			        }
                 			        unset($MySQLSDBRst['result'][$i]); //单个结果访问完毕,释放内存
                 			    }
-                			    unset($MySQLSDBRst); //释放总内存
+                			$lastResultNum = $MySQLSDBRst['count'];
+                	        unset($MySQLSDBRst); //释放总内存
+                		    $partialit++; //循环次数增加
         			    }
         			    
         			    //所有统计完毕, 检查是否empty
@@ -172,7 +174,7 @@
         			<p class="text-grey">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
         			<?php if($cacheRST){ ?><p class="text-grey">搜索结果数: <?php echo count($SearchRST); ?></p><?php } ?>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
-				<?php if(!$cacheRST){ ?> <p class="text-grey">使用形随意动BoostPHP框架进行快速缓存</p> <?php } ?>
+				<?php if(!$cacheRST){ ?> <p class="text-grey">此页面是由BoostPHP生成的缓存页面</p> <?php } ?>
 			</div>
 	</body>
 </html>
