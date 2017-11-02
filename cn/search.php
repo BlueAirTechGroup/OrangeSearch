@@ -138,6 +138,7 @@
                 	        unset($MySQLSDBRst); //释放总内存
                 		    $partialit++; //循环次数增加
         			    }
+        			    $calcSearchWeightEndTime = microtime(true);
         			    
         			    //所有统计完毕, 检查是否empty
         			    if(!empty($SearchRST)){
@@ -157,7 +158,7 @@
         			                        <h4 class="without-margin"><a class="text-orange" href="<?php echo $TempOutputArr['URL']; ?>" target="_blank"><?php echo empty($TempOutputArr['Title']) ? "No Title" : $TempOutputArr['Title']; ?></a></h4>
         			                        <p class="small without-margin text-grey">URL: <?php echo $TempOutputArr['URL'];  ?></p>
         			                        <p class="without-margin"><?php echo $TempOutputArr['Description']; ?></p>
-        			                        <p class="small without-margin">参考信息: 搜索重量[<?php echo $TempOutputArr['searchRank']; ?>/100], 权重[<?php echo $TempOutputArr['Rank']; ?>/10]</p>
+        			                        <p class="small without-margin">参考信息: 搜索重量[<?php echo $TempOutputArr['searchRank']; ?>/180], 权重[<?php echo $TempOutputArr['Rank']; ?>/10]</p>
         			                    </div>
         			                    <!-- /div>
         			               	</div -->
@@ -168,10 +169,12 @@
         			    $myMySQLCls->closeConn($searchDBConn);
 			    }
 			    $myResultCls->cacheEnd(true,'cachepages/',$cacheRST);
+			    $nowTime = microtime(true);
     			?>
 			<div class="container" style="margin-top:20px;">
         			<p class="text-grey">使用内存: <?php echo((memory_get_peak_usage()/1024/1024)); ?>M</p>
-        			<p class="text-grey">总执行时间: <?php $nowTime = microtime(true); echo ($nowTime-$startTime); ?>秒</p>
+        			<?php if($cacheRST){ ?><p class="text-grey">权重计算时间: <?php echo ($calcSearchWeightEndTime - $startTime); ?>秒</p><?php } ?>
+        			<p class="text-grey">总执行时间: <?php echo ($nowTime - $startTime); ?>秒</p>
         			<?php if($cacheRST){ ?><p class="text-grey">搜索结果数: <?php echo count($SearchRST); ?></p><?php } ?>
         			<p class="text-grey">Powered by <a href="http://www.xsyds.cn/" target="_blank">形随意动</a>&copy;2015-2017</p>
 				<?php if(!$cacheRST){ ?> <p class="text-grey">此页面是由BoostPHP生成的缓存页面</p> <?php } ?>
